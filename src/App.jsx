@@ -1,13 +1,13 @@
 import './App.css'
-import { useState } from 'react'
-import Hello from './components/Hello'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <Hello />
+        <h1>Hello!</h1>
+        <h2>Em breve teremos uma aplicação bem legal aqui ;)</h2>
+        <img src="https://github.com/joaofelipelemos.png" alt="" />
+
     </div>
   )
 }
