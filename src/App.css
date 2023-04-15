@@ -32,3 +32,8 @@ ul.todo-list li {
   outline: none;
   width: 50px;
 }
+
+.todo.checked {
+  color: #b2bec3;
+  text-decoration: line-through;
+}

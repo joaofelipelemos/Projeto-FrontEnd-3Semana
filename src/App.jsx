@@ -7,12 +7,6 @@ const App = () => {
   const ESC_KEY = 27;
   const ENTER_KEY = 13;
 
-  /* const initialTodos = [
-    {id: 1, title: 'Estudar React', checked: false },
-    {id: 2, title: 'Estudar Python', checked: true },
-    {id: 3, title: 'Fazer tarefas', checked: false },
-  ]; */
-
   const [todos, setTodos] = useState([]);
   const [value, setValue] = useState('');
 
@@ -43,6 +37,15 @@ const App = () => {
     }
   }
 
+  const onToggle = (todo) => {
+    setTodos(todos.map((obj) => (obj.id === todo.id ? {...obj, checked: !todo.checked } : obj
+      )));
+  }
+
+  const onRemove = (todo) => {
+    setTodos(todos.filter((obj) => obj.id !== todo.id));
+  };
+
 
 
   return (
@@ -61,8 +64,17 @@ const App = () => {
             <ul className='todo-list'>
               {todos.map((todo) => (
                   <li key={todo.id}>
-                    <span className='todo'>{todo.title}</span>
-                    <button className='remove' type='button'>
+                    <span
+                    onClick={() => onToggle(todo)}
+                    role='button'
+                    tabIndex={0}
+                    className={['todo', todo.checked ? "checked" : ""].join(" ")}>
+                      {todo.title}
+                    </span>
+                    <button
+                    className='remove'
+                    type='button'
+                    onClick={() => onRemove(todo)}>
                       <MdDelete size={28} />
                     </button>
                   </li>
